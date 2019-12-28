@@ -7,6 +7,7 @@
 tempChoice = input("Please type c to convert from Celsius or f to convert from Fahrenheit.\n")
 endTemp = 0 #so program knows endTemp is an int.
 testTemp = 0 #I needed a int for a workarround sooooo...
+startTemp = 0
 
 while tempChoice not in 'cCfF': # Simple user input sanitation
     print("wrong input detected") # If user hits enter without any input the program crashes. Need to fix.
@@ -18,10 +19,14 @@ if (tempChoice =='c') or (tempChoice == 'C'):
 else: # Gotta love else, it lets us be a bit lazy.
     tempType = 'Fahrenheit'
 
-#Decided to place after user sanitation, just to get the temp to convert from.
-startTemp = input("Please enter the temperature in {}.\n".format(tempType))
-
-#note to self, create user input sanitation here.
+#Gets temperature to convert from as well as sanitizes the user's input
+startTemp = input("Please enter the Temperature in {}.\n".format(tempType))
+while testTemp != 1:
+    if startTemp.isdigit():
+        testTemp = 1
+    else:
+        startTemp = input("Please enter the Temperature in {}.\n".format(tempType))
+        
 
 # C = (F - 32) / 1.8
 # F = C * 1.8 + 32
